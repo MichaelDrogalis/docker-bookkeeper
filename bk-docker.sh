@@ -29,8 +29,8 @@ for setting in indexDirectories journalDirectory ledgerDirectories; do
   fi
 done
 
-env
-
 cat "${BK_CFG_FILE}"
+
+/opt/bookkeeper/bin/bookkeeper shell metaformat -nonInteractive
 
 exec $@
