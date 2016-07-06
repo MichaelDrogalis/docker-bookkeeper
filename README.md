@@ -2,6 +2,7 @@
 
 Docker image for Apache BookKeeper.
 
-```
-$ docker run -v "bookkeeper-conf-dir:/bookkeeper-server-4.3.2/conf" michaeldrogalis/bookkeeper
-```
+Uses the default `/ledgers` root in Zookeeper.
+
+On startup this container will attempt to format Zookeeper (create `/ledgers` node)
+if it's not already formatted. 
