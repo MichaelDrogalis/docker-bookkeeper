@@ -31,6 +31,6 @@ done
 
 cat "${BK_CFG_FILE}"
 
-/opt/bookkeeper/bin/bookkeeper shell metaformat -nonInteractive
+/opt/bookkeeper/bin/bookkeeper shell metaformat -nonInteractive &> /dev/null
 
 exec $@
