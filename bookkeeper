@@ -220,4 +220,3 @@ elif [ $COMMAND == "help" ]; then
 else
   exec $JAVA $OPTS $COMMAND $@
 fi
-

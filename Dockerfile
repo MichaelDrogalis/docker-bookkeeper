@@ -10,20 +10,14 @@ RUN apk add --no-cache wget bash \
 WORKDIR /opt/bookkeeper
 
 COPY conf-dir /opt/bookkeeper/conf/
-ADD bk-docker.sh /usr/local/bin/
-ADD start-bookkeeper.sh /usr/local/bin/
 COPY bookkeeper /opt/bookkeeper/bin/
-COPY bookkeeper-daemon.sh /opt/bookkeeper/bin/
-COPY bookkeeper-cluster.sh /opt/bookkeeper/bin/
 
-RUN ["mkdir", "-p", "/data/", "/data/journal", "/data/index", "/data/ledger"]
-RUN ["chmod", "+x", "/usr/local/bin/bk-docker.sh"]
-RUN ["chmod", "+x", "/usr/local/bin/start-bookkeeper.sh"]
+RUN ["mkdir", "-p", "/data/journal", "/data/index", "/data/ledger"]
 
-VOLUME ["/data/journal", "/data/index", "/data/ledger"]
+VOLUME ["/data"]
 
 EXPOSE 3181/tcp
 
-ENTRYPOINT ["/usr/local/bin/bk-docker.sh"]
-
-CMD ["/opt/bookkeeper/bin/bookkeeper", "bookie"]
+ENTRYPOINT ["/opt/bookkeeper/bin/bookkeeper"]
+#"/usr/local/bin/bk-docker.sh"
+CMD ["bookie"]
