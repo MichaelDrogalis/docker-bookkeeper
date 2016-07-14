@@ -3,6 +3,9 @@
 Docker image for Apache BookKeeper.
 
 Uses the default `/ledgers` root in Zookeeper.
+The only change from a default Bookkeeper configuration is prefering to
+use the containers hostname over it's IP address. This is because Kubernetes
+PetSet abstraction guarantees a stable hostname between crashes.
 
 ## Usage
 
@@ -17,3 +20,12 @@ Zookeeper structure.
 
 Just `kubectl create -f bookkeeper.petset.yaml`. This will ensure
 `shell metaformat -nonInteractive` is run as an init step.
+
+## Note on Volume Provisioners
+If you don't have a dynamic volume provisioner running on your Kubernetes cluster, you must remove this annotation and
+supply your own persistent volumes.
+
+```
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+```
