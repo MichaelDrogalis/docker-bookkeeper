@@ -14,6 +14,8 @@ COPY bookkeeper /opt/bookkeeper/bin/
 
 RUN ["mkdir", "-p", "/data/journal", "/data/index", "/data/ledger"]
 
+ADD jmx_prometheus_javaagent.jar /opt/config/jmx_exporter/jmx_prometheus_javaagent.jar
+
 VOLUME ["/data"]
 
 EXPOSE 3181/tcp
