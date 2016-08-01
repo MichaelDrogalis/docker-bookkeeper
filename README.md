@@ -26,6 +26,6 @@ If you don't have a dynamic volume provisioner running on your Kubernetes cluste
 supply your own persistent volumes.
 
 ```
-  annotations:
-    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+        annotations:
+          volume.alpha.kubernetes.io/storage-class: anything
 ```
